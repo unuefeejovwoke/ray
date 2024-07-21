@@ -7,7 +7,7 @@
   --first-color: hsl(0, 0%, 100%);
   --text-color: #fff;
   --text-color-black: hsl(0, 0%, 100%);
-  --body-color: hsl(291, 13%, 38%);
+  --body-color: hsl(29, 59%, 55%);
 
   /*========== Font and typography ==========*/
   --body-font: 'Poppins', sans-serif;
@@ -51,7 +51,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(106, 84, 109); /* darker background */
+  background-color: rgb(151, 105, 57); /* darker background */
   z-index: 1000;
   visibility: hidden; /* Initially hidden */
 }
@@ -76,7 +76,7 @@ img {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: rgb(106, 84, 109); /* Red background for visibility */
+  background: rgb(151, 105, 57); /* Red background for visibility */
   border: none;
   border-radius: 50%; /* Circular button */
   color: white;
@@ -91,7 +91,7 @@ img {
 
 /* Ensures the button is not too abrupt */
 .close-btn:hover {
-  background-color: rgb(106, 84, 109); /* Slightly darker on hover */
+  background-color: rgb(151, 105, 57); /* Slightly darker on hover */
 }
 
 
