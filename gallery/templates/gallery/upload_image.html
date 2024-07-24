@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload New Image</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: hsl(29, 59%, 55%);
+            color: hsl(0, 0%, 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .upload-section {
+            background-color: hsl(0, 0%, 100%);
+            padding: 20px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 15px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #161616;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #252627;
+        }
+        /* Responsive adjustments for very small devices */
+        @media (max-width: 400px) {
+            .upload-section {
+                padding: 15px; 
+                width: 350px;/* Smaller padding for smaller devices */
+            }
+
+            label, input, textarea, button {
+                font-size: 14px; /* Smaller font size for readability on small devices */
+            }
+        }
+        
+        /* Additional styles for larger devices */
+        @media (min-width: 768px) {
+            body {
+                padding: 20px; /* More padding on larger screens */
+            }
+
+            .upload-section {
+                margin: 20px; /* More margin to centralize the form */
+            }
+
+            input[type="file"] {
+                cursor: pointer; /* Enhances usability on desktop */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="upload-section">
+        <h1>Upload New Image</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="posted_by">Posted By:</label>
+            <input type="text" id="posted_by" name="posted_by" placeholder="posted by" required>
+
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" required>
+
+
+            <button type="submit">Upload Image</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== REMIXICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+        
+        <!--=============== SWIPER CSS ===============-->
+        <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+        <title>Happy Induction Day</title>
+    </head>
+    <body>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <img src="{% static 'assets/img/shu.jpeg' %}" alt="Welcome Image" class="popup-img">
+                <button class="close-btn">X</button>
+            </div>
+        </div>
+
+        <div class="add-image-container">
+            <a href="{% url 'upload_image' %}" class="btn add-image-btn">Upload</a>
+        </div>
+
+        
+        <!-- Include this before your existing gallery display in gallery.html -->
+        
+        
+        <div class="gallery">
+            {% if messages %}
+                {% for message in messages %}
+                    <div id="message" class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <!-- =============== SWIPER GALLERY CARDS =============== -->
+            <div class="swiper gallery-cards">
+
+                <div class="swiper-wrapper">
+                    {% for photo in photos %}
+                        <div class="swiper-slide">
+                            <article class="gallery__card">
+                                <img src="{{ photo.image.url }}" alt="photo" class="gallery__img">
+
+                                <div class="gallery__data">
+                                    <h3 class="gallery__title">Happy Induction / Oath-Taking Day</h3>
+                                    <span class="gallery__subtitle">FCLTR. OBIANUJU SHULAMMITE</span>
+                                </div>
+                            </article>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+            
+            </div>
+
+            <!-- =============== SWIPER GALLERY THUMBNAIL =============== -->
+            <div class="gallery__overflow">
+                <div class="swiper gallery-thumbs">
+                    <div class="swiper-wrapper">
+                        {% for photo in photos %}
+                        <div class="swiper-slide">
+                            <div class="gallery__thumbnail">
+                                <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="gallery__thumbnail-img">
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Swiper pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <!-- Swiper arrows -->
+                <div class="swiper-button-next">
+                    <i class="ri-arrow-right-line"></i>
+                </div>
+                <div class="swiper-button-prev">
+                    <i class="ri-arrow-left-line"></i>
+                </div>
+            </div>
+
+        
+        <!--=============== SWIPER JS ===============-->
+        <script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="{% static 'assets/js/main.js' %}"></script>
+
+        <script>
+            // Check if the message element exists
+            const messageElement = document.getElementById('message');
+            if (messageElement) {
+                setTimeout(function() {
+                    messageElement.style.display = 'none';
+                }, 15000); // 15000 milliseconds = 15 seconds
+            }
+        </script>
+    </body>
+</html>
